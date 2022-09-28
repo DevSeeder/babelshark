@@ -2,15 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { Model } from 'nestjs-dynamoose';
 
 @Injectable()
-export class AbstractDynamooseRepository<ModelSchema, ModelKey> {
+export abstract class AbstractDynamooseRepository<ModelSchema, ModelKey> {
     constructor(protected readonly model: Model<ModelSchema, ModelKey>) {}
 
-    create(user: ModelSchema) {
-        return this.model.create(user);
+    create(item: ModelSchema) {
+        return this.model.create(item);
     }
 
-    update(key: ModelKey, user: Partial<ModelSchema>) {
-        return this.model.update(key, user);
+    update(key: ModelKey, item: Partial<ModelSchema>) {
+        return this.model.update(key, item);
     }
 
     findOne(key: ModelKey) {

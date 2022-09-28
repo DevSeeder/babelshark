@@ -1,22 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from '../../src/microservice/adapter/controllers/app.controller';
-import { AppService } from '../../src/microservice/domain/services/app.service';
+import { SymbolsController } from '../../src/microservice/adapter/controllers/app.controller';
+import { CreateSymbolService } from '../../src/microservice/domain/services/symbols/create-symbol.service';
 
 describe('AppController', () => {
-  let appController: AppController;
+    let appController: SymbolsController;
 
-  beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
-    }).compile();
+    beforeEach(async () => {
+        const app: TestingModule = await Test.createTestingModule({
+            controllers: [SymbolsController],
+            providers: [CreateSymbolService]
+        }).compile();
 
-    appController = app.get<AppController>(AppController);
-  });
-
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+        appController = app.get<SymbolsController>(SymbolsController);
     });
-  });
+
+    describe('root', () => {
+        it('should return "Hello World!"', () => {
+            expect(appController.getHello()).toBe('Hello World!');
+        });
+    });
 });

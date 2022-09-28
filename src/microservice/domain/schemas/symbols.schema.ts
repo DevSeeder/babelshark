@@ -6,30 +6,50 @@ export const SymbolSchema = new Schema({
         hashKey: true
     },
     symbol: {
-        type: String
+        type: String,
+        required: true
     },
     description: {
         type: String
     },
     language: {
-        type: String
+        type: String,
+        required: true
     },
     types: {
-        type: Array
+        type: Array,
+        required: true,
+        default: []
     },
     translations: {
-        type: Object
+        type: Object,
+        required: true,
+        default: {
+            pt_br: [],
+            es: [],
+            ja: [],
+            kr: [],
+            fr: [],
+            it: [],
+            de: []
+        }
     },
     createdAt: {
-        type: String
+        type: Date,
+        required: true,
+        default: new Date()
     },
     updatedAt: {
-        type: String
+        required: true,
+        type: Date,
+        default: new Date()
     },
     active: {
-        type: Boolean
+        type: Boolean,
+        required: true,
+        default: true
     },
     deletedAt: {
-        type: String
+        type: Date
     }
 });
