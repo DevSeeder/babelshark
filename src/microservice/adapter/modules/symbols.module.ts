@@ -2,7 +2,7 @@ import { SymbolSchema } from '../../domain/schemas/symbols.schema';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DynamooseModule } from 'nestjs-dynamoose';
-import { SymbolsController } from '../controllers/app.controller';
+import { SymbolsController } from '../controllers/symbol.controller';
 import { CreateSymbolService } from '../../domain/services/symbols/create-symbol.service';
 import configuration from '../../../config/configuration';
 import { SymbolDynamooseRepository } from '../repository/symbol-dynamoose.repository';

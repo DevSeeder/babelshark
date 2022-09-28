@@ -1,4 +1,4 @@
-import { ISymbol } from './../../domain/interfaces/symbol.interface';
+import { ISymbol } from '../../domain/interfaces/symbol.interface';
 import { Controller, Post } from '@nestjs/common';
 import { CreateSymbolService } from '../../domain/services/symbols/create-symbol.service';
 
