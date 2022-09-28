@@ -13,7 +13,7 @@ import { SymbolDynamooseRepository } from '../repository/symbol-dynamoose.reposi
             isGlobal: true,
             load: [configuration]
         }),
-        DynamooseModule.forFeature([{ name: 'Symbol', schema: SymbolSchema }])
+        DynamooseModule.forFeature([{ name: 'symbols', schema: SymbolSchema }])
     ],
     controllers: [SymbolsController],
     providers: [CreateSymbolService, SymbolDynamooseRepository]

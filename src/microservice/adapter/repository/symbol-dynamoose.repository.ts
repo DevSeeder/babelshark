@@ -9,7 +9,7 @@ export class SymbolDynamooseRepository extends AbstractDynamooseRepository<
     SymbolKey
 > {
     constructor(
-        @InjectModel('Symbol')
+        @InjectModel('symbols')
         protected readonly model: Model<ISymbol, SymbolKey>
     ) {
         super(model);
