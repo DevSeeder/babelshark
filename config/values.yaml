@@ -1,0 +1,4 @@
+aws:
+  accessKey: ${ACCESS_KEY}
+  secretAccessKey: ${SECRET_ACCESS_KEY}
+  region: us-east-1
