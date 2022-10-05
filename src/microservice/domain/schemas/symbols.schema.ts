@@ -4,7 +4,8 @@ export const SymbolSchema = new Schema(
     {
         id: {
             type: String,
-            hashKey: true
+            hashKey: true,
+            required: true
         },
         symbol: {
             type: String,
@@ -44,5 +45,5 @@ export const SymbolSchema = new Schema(
             type: Date
         }
     },
-    { timestamps: true }
+    { timestamps: true, saveUnknown: true }
 );

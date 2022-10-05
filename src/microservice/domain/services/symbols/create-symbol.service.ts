@@ -8,8 +8,9 @@ import { EnumBufferEncoding } from '../../enums/buffer-encoding.enum';
 export class CreateSymbolService {
     constructor(protected readonly repository: SymbolDynamooseRepository) {}
 
-    async createSymbol(symbol: ISymbol): Promise<void> {
+    async createSymbol(symbol: ISymbol): Promise<ISymbol> {
         symbol.id = RandomHelper.GenerateHashString(12, EnumBufferEncoding.HEX);
         await this.repository.create(symbol);
+        return symbol;
     }
 }
