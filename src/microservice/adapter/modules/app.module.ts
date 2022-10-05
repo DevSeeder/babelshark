@@ -3,11 +3,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DynamooseModule } from 'nestjs-dynamoose';
 
 import configuration from '../../../config/configuration';
+import { GramaticTypesModule } from './gramatic-types.module';
 import { SymbolsModule } from './symbols.module';
 
 @Module({
     imports: [
         SymbolsModule,
+        GramaticTypesModule,
         ConfigModule.forRoot({
             isGlobal: true,
             load: [configuration]

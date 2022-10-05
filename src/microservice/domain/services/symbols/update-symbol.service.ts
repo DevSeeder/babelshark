@@ -1,22 +1,15 @@
-import { SymbolKey } from './../../interfaces/symbol.interface';
-import { SymbolDTO } from './../../../adapter/dto/symbol.dto';
+import { SymbolKey, ISymbol } from './../../interfaces/symbol.interface';
 import { SymbolDynamooseRepository } from '../../../adapter/repository/symbol-dynamoose.repository';
 import { Injectable } from '@nestjs/common';
+import { AbstractUpdateService } from '../abstract-update.service';
 
 @Injectable()
-export class UpdateSymbolService {
-    constructor(protected readonly repository: SymbolDynamooseRepository) {}
-
-    async updateSymbol(key: SymbolKey, symbol: SymbolDTO): Promise<void> {
-        await this.repository.update(key, symbol);
-    }
-
-    async activateSymbol(id: SymbolKey): Promise<void> {
-        await this.repository.update(id, { active: true });
-    }
-
-    async inactivateSymbol(id: SymbolKey): Promise<void> {
-        await this.repository.update(id, { active: false });
+export class UpdateSymbolService extends AbstractUpdateService<
+    ISymbol,
+    SymbolKey
+> {
+    constructor(protected readonly repository: SymbolDynamooseRepository) {
+        super(repository);
     }
 
     async pushTypes(key: SymbolKey, types: string[]): Promise<void> {

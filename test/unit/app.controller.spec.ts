@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SymbolsController } from '../../src/microservice/adapter/controllers/symbol.controller';
+import { SymbolsController } from '../../src/microservice/adapter/controllers/symbols.controller';
 import { CreateSymbolService } from '../../src/microservice/domain/services/symbols/create-symbol.service';
 
 describe('AppController', () => {

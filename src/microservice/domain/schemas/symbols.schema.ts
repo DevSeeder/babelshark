@@ -42,7 +42,8 @@ export const SymbolSchema = new Schema(
             default: true
         },
         deletedAt: {
-            type: Date
+            type: Date,
+            default: null
         }
     },
     { timestamps: true, saveUnknown: true }

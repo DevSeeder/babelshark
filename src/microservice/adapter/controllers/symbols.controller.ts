@@ -1,6 +1,6 @@
-import { GetSymbolService } from './../../domain/services/symbols/get-symbol.service';
-import { SymbolDTO } from './../dto/symbol.dto';
-import { UpdateSymbolService } from './../../domain/services/symbols/update-symbol.service';
+import { GetSymbolService } from '../../domain/services/symbols/get-symbol.service';
+import { SymbolDTO } from '../dto/symbol.dto';
+import { UpdateSymbolService } from '../../domain/services/symbols/update-symbol.service';
 import {
     ISymbol,
     SymbolFilter,
@@ -32,27 +32,27 @@ export class SymbolsController {
 
     @Patch('/update/:id')
     updateSymbol(@Param() key: any, @Body() symbol: SymbolDTO) {
-        return this.updateService.updateSymbol(key, symbol);
+        return this.updateService.update(key, symbol);
     }
 
     @Patch('/activate/:id')
     activateSymbol(@Param() key: SymbolKey) {
-        return this.updateService.activateSymbol(key);
+        return this.updateService.activate(key);
     }
 
     @Patch('/inactivate/:id')
     inactivateSymbol(@Param() key: SymbolKey) {
-        return this.updateService.inactivateSymbol(key);
+        return this.updateService.inactivate(key);
     }
 
     @Get('/:id')
     getSymbolByKey(@Param() key: SymbolKey) {
-        return this.getService.getSymbolByKey(key);
+        return this.getService.getByKey(key);
     }
 
     @Get('/')
     getSymbols(@Query() filter: SymbolFilter) {
-        return this.getService.getSymbols(filter);
+        return this.getService.search(filter);
     }
 
     @Patch('/push/types/:id')

@@ -5,16 +5,15 @@ import {
     SymbolFilter,
     SymbolKey
 } from '../../interfaces/symbol.interface';
+import { AbstractGetService } from '../abstract-get.service';
 
 @Injectable()
-export class GetSymbolService {
-    constructor(protected readonly repository: SymbolDynamooseRepository) {}
-
-    async getSymbolByKey(key: SymbolKey): Promise<ISymbol> {
-        return this.repository.findByKey(key);
-    }
-
-    async getSymbols(filter: SymbolFilter): Promise<ISymbol[]> {
-        return this.repository.find(filter);
+export class GetSymbolService extends AbstractGetService<
+    ISymbol,
+    SymbolKey,
+    SymbolFilter
+> {
+    constructor(protected readonly repository: SymbolDynamooseRepository) {
+        super(repository);
     }
 }
