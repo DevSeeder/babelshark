@@ -1,4 +1,4 @@
-import { SymbolSchema } from '../../domain/schemas/symbols.schema';
+import { SymbolSchema } from '../../domain/schemas/symbol.schema';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DynamooseModule } from 'nestjs-dynamoose';

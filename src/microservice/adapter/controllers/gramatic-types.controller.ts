@@ -26,7 +26,7 @@ export class GramaticTypesController {
     ) {}
 
     @Post('/create')
-    async createSymbol(@Body() item: GramaticType) {
+    async createGramaticType(@Body() item: GramaticType) {
         await this.createService.createGramaticType(item);
     }
 

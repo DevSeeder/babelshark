@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { AbstractDynamooseRepository } from '../repositories/abstract-dynamoose.repository';
 
 @Injectable()
-export class AbstractUpdateService<ModelSchema, ModelKey> {
+export class AbstractUpdateService<ModelSchema, ModelKey, ModelDTO> {
     constructor(
         protected readonly repository: AbstractDynamooseRepository<
             ModelSchema,
@@ -10,8 +10,9 @@ export class AbstractUpdateService<ModelSchema, ModelKey> {
         >
     ) {}
 
-    async update(key: ModelKey, symbol: Partial<ModelSchema>): Promise<void> {
-        await this.repository.update(key, symbol);
+    async update(key: ModelKey, item: ModelDTO): Promise<void> {
+        const itemDTO: any = item;
+        await this.repository.update(key, itemDTO);
     }
 
     async activate(id: ModelKey): Promise<void> {

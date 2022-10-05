@@ -1,7 +1,7 @@
 import { UpdateGramaticTypeService } from './../../domain/services/gramatic-types/update-gramatic-type.service';
 import { CreateGramaticTypeService } from './../../domain/services/gramatic-types/create-gramatic-type.service';
 import { GramaticTypeDynamooseRepository } from './../repository/gramatic-type-dynamoose.repository';
-import { GramaticTypeSchema } from './../../domain/schemas/gramatic-types.schema';
+import { GramaticTypeSchema } from '../../domain/schemas/gramatic-type.schema';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DynamooseModule } from 'nestjs-dynamoose';

@@ -13,7 +13,7 @@ export class GramaticTypeDynamooseRepository extends AbstractDynamooseRepository
 > {
     constructor(
         @InjectModel('gramaticTypes')
-        protected readonly model: Model<GramaticType, any>
+        protected readonly model: Model<GramaticType, GramaticTypeKey>
     ) {
         super(model);
     }

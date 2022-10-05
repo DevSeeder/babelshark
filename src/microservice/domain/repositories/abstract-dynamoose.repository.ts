@@ -27,8 +27,6 @@ export abstract class AbstractDynamooseRepository<ModelSchema, ModelKey> {
             return filter;
         });
 
-        console.log(...queryFilter);
-
         return this.model.scan(...queryFilter).exec();
     }
 

@@ -10,7 +10,8 @@ import { AbstractUpdateService } from '../abstract-update.service';
 @Injectable()
 export class UpdateGramaticTypeService extends AbstractUpdateService<
     GramaticType,
-    GramaticTypeKey
+    GramaticTypeKey,
+    GramaticType
 > {
     constructor(
         protected readonly repository: GramaticTypeDynamooseRepository

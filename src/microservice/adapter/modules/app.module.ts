@@ -4,12 +4,14 @@ import { DynamooseModule } from 'nestjs-dynamoose';
 
 import configuration from '../../../config/configuration';
 import { GramaticTypesModule } from './gramatic-types.module';
+import { LanguagesModule } from './languages.module';
 import { SymbolsModule } from './symbols.module';
 
 @Module({
     imports: [
         SymbolsModule,
         GramaticTypesModule,
+        LanguagesModule,
         ConfigModule.forRoot({
             isGlobal: true,
             load: [configuration]

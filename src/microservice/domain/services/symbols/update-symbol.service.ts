@@ -1,3 +1,4 @@
+import { SymbolDTO } from './../../../adapter/dto/symbol.dto';
 import { SymbolKey, ISymbol } from './../../interfaces/symbol.interface';
 import { SymbolDynamooseRepository } from '../../../adapter/repository/symbol-dynamoose.repository';
 import { Injectable } from '@nestjs/common';
@@ -6,7 +7,8 @@ import { AbstractUpdateService } from '../abstract-update.service';
 @Injectable()
 export class UpdateSymbolService extends AbstractUpdateService<
     ISymbol,
-    SymbolKey
+    SymbolKey,
+    SymbolDTO
 > {
     constructor(protected readonly repository: SymbolDynamooseRepository) {
         super(repository);
