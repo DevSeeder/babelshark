@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { Model, Document, UpdatePartial } from 'nestjs-dynamoose';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { Model, Document } from 'nestjs-dynamoose';
 
 @Injectable()
 export abstract class AbstractDynamooseRepository<ModelSchema, ModelKey> {
@@ -9,7 +9,12 @@ export abstract class AbstractDynamooseRepository<ModelSchema, ModelKey> {
         return this.model.create(item);
     }
 
-    update(key: ModelKey, item: Partial<ModelSchema>) {
+    async update(
+        key: ModelKey,
+        item: Partial<ModelSchema>,
+        validateIfExists = true
+    ) {
+        if (validateIfExists) await this.validateIfExists(key);
         return this.model.update(key, item);
     }
 
@@ -34,12 +39,24 @@ export abstract class AbstractDynamooseRepository<ModelSchema, ModelKey> {
         return this.model.scan().exec();
     }
 
-    async updatePush(key: ModelKey, pushItens: Array<any>, pushKey: string) {
+    async updatePush(
+        key: ModelKey,
+        pushItens: Array<any>,
+        pushKey: string,
+        validateIfExists = true
+    ) {
+        if (validateIfExists) await this.validateIfExists(key);
+
         const addObj = {};
         addObj[pushKey] = pushItens;
 
         await this.model.update(key, {
             $ADD: addObj
         });
+    }
+
+    async validateIfExists(key: ModelKey) {
+        const findRes = await this.findByKey(key);
+        if (!findRes) throw new NotFoundException('Not Found');
     }
 }
